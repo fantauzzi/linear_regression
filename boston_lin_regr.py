@@ -7,6 +7,7 @@ from sklearn import datasets
 from matplotlib import pyplot as plt
 from sklearn.linear_model import LinearRegression
 import statsmodels.api as sm
+from sklearn.metrics import mean_squared_error
 
 plt.ioff()
 
@@ -23,6 +24,7 @@ with warnings.catch_warnings():
     boston = datasets.load_boston()
 
 dataset_X = DataFrame(boston.data, columns=boston.feature_names)
+dataset_X.drop(['B'], axis=1, inplace=True)
 dataset_y = Series(boston.target)
 dataset = dataset_X.copy()
 dataset['MEDV'] = dataset_y
@@ -93,7 +95,7 @@ plt.hist(dataset['LSTAT'], bins=50)
 
 # Performa the simple linear regression of MEDV against LSTAT
 X, y = dataset['LSTAT'].values.reshape(-1, 1), dataset['MEDV'].values
-model = LinearRegression().fit(X, y)
+model: LinearRegression = LinearRegression().fit(X, y)
 y_pred = model.predict(X=X)
 slope = model.coef_[0]
 intercept = model.intercept_
@@ -103,7 +105,7 @@ rss = np.sum(np.power(y - y_pred, 2))
 rse = (rss / (n_samples - 2)) ** .5
 print(f'RSS={rss:.3f}; RSE={rse:.3f} on {n_samples - 2} degrees of freedom; R-squared={r2:.3f}')
 
-fig, ax = plt.subplots()
+_, ax = plt.subplots()
 ax.scatter(X, y, facecolor='none', edgecolor='blue')
 ax.plot(X, y_pred, color='black')
 ax.set_xlabel('LSTAT')
@@ -121,7 +123,7 @@ high MEDV values; however, more formally, we want to test the null hypothesis
 for them '''
 X_mean = np.mean(X)
 se2_slope = rse ** 2 / np.sum(np.power(X - X_mean, 2))
-se2_intercept = rse**2 * (1 / n_samples + X_mean ** 2 / np.sum(np.power(X - X_mean, 2)))
+se2_intercept = rse ** 2 * (1 / n_samples + X_mean ** 2 / np.sum(np.power(X - X_mean, 2)))
 print(
     f'The 95% confidence interval for the slope is [{slope - 2 * se2_slope ** .5:.3f}, {slope + 2 * se2_slope ** .5:.3f}]')
 print(
@@ -133,8 +135,7 @@ y_est = slope * x + intercept
 y_err = rse * np.sqrt(1 / n_samples + (X - X_mean) ** 2 / np.sum((X - X_mean) ** 2))
 y_err = y_err.squeeze()
 
-
-fig, ax = plt.subplots()
+_, ax = plt.subplots()
 ax.plot(x, y_est, '-')
 ax.fill_between(x, y_est - y_err, y_est + y_err, alpha=0.2)
 ax.plot(X, y, 'o', color='tab:brown')
@@ -147,10 +148,56 @@ model2 = sm.OLS(y, X_exog)
 res = model2.fit()
 print('\n', res.summary())
 
+residuals = y_pred - y
+_, ax = plt.subplots()
+ax.set_title('Empirical distribution of residuals')
+ax.set_ylabel('Binned distr.')
+ax.hist(residuals, 50)
+sorted_residuals = np.sort(residuals)
+cum_prob = 1. * np.arange(len(sorted_residuals)) / float(len(sorted_residuals) - 1)
+# prob_dens = cum_prob /
+ax2 = ax.twinx()
+ax2.set_ylabel('Cumulative distr.', color='red')
+ax2.plot(sorted_residuals, cum_prob, color='red')
+# plt.pause(0)
 '''
 TODO
 - My confidence intervale is 95% instead of 97.5%, difficult to compare with those provided by R and Statsmodel;
 also my CI seem inconsistent with those provided by R and Statsmodel
 - Not clear how to compute and plot the bands of uncertainty around the linear regression, i.e. the CI for a given
 inference; see y_err above
+Note: se2_intercept and se2_slope appear to be correct when compared to R output
 '''
+
+# Now let's do some multi-variate regression
+
+X, y = dataset_X, dataset_y
+mv_model: LinearRegression = LinearRegression().fit(X, y)
+coeffs = pd.Series(mv_model.coef_, index=mv_model.feature_names_in_)
+print(coeffs.to_frame().T)
+
+y_pred = mv_model.predict(X)
+mse = mean_squared_error(y, y_pred)
+
+r2 = mv_model.score(X, y)
+rss = np.sum(np.power(y - y_pred, 2))
+rse = (rss / (n_samples - 2)) ** .5
+print(f'RSS={rss:.3f}; RSE={rse:.3f} on {n_samples - 2} degrees of freedom; R-squared={r2:.3f}')
+corr_matrix = dataset.corr()
+print(corr_matrix)
+
+# Display the correlation matrix as a heatmap with Seaborn
+plt.subplots()
+corr_matrix_rounded = corr_matrix.round(decimals=1)
+ax = sns.heatmap(corr_matrix_rounded,
+                 vmin=-1,
+                 vmax=1,
+                 center=0,
+                 cmap=sns.diverging_palette(20, 220, n=200),
+                 square=True,
+                 annot=True)
+ax.set_xticklabels(ax.get_xticklabels(),
+                   rotation=45,
+                   horizontalalignment='right')
+# fig.tight_layout()
+plt.pause(0)
