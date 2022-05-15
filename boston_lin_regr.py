@@ -222,7 +222,7 @@ ax.set_xticklabels(ax.get_xticklabels(),
                    rotation=45,
                    horizontalalignment='right')
 # fig.tight_layout()
-# plt.pause(0)
+plt.pause(0)
 
 # %% [md]
 # Let's give it a spin with Statsmodel
