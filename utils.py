@@ -35,10 +35,12 @@ def forward_select(model, X, y):
         for candidate in candidates:
             X_selected = X[selected + [candidate]].copy()
             res = model().fit(X_selected, y)
-            r2 = res.score(X_selected, y)
-            if r2 > best_r2:
+            n_vars = len(X_selected.columns)
+            n = len(X_selected)
+            adjusted_r2 = 1-(1-res.score(X_selected, y))*(n-1)/(n-n_vars-1)
+            if adjusted_r2 > best_r2:
                 best_candidate = candidate
-                best_r2 = r2
+                best_r2 = adjusted_r2
         if best_candidate is None:
             break
         else:
