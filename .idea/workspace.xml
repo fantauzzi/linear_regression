@@ -7,8 +7,6 @@
     <list default="true" id="63b313d2-5576-4b02-a429-9ab2eb490ba1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boston_lin_regr.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/boston_lin_regr.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,6 +156,8 @@
       <workItem from="1652775143377" duration="14039000" />
       <workItem from="1652857536694" duration="1376000" />
       <workItem from="1652949391957" duration="2647000" />
+      <workItem from="1653033553685" duration="7039000" />
+      <workItem from="1653049048641" duration="1585000" />
     </task>
     <servers />
   </component>
