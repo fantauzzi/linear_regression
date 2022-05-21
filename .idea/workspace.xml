@@ -157,7 +157,8 @@
       <workItem from="1652857536694" duration="1376000" />
       <workItem from="1652949391957" duration="2647000" />
       <workItem from="1653033553685" duration="7039000" />
-      <workItem from="1653049048641" duration="1585000" />
+      <workItem from="1653049048641" duration="2252000" />
+      <workItem from="1653119400860" duration="10277000" />
     </task>
     <servers />
   </component>
@@ -172,11 +173,12 @@
           <line>17</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="jupyter-line">
+          <url>notebook:///home/fanta/workspace/linear_regression/boston_lin_regr.ipynb</url>
+          <line>180</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/linear_regression$utils.coverage" NAME="utils Coverage Results" MODIFIED="1652794074101" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/linear_regression$.coverage" NAME=" Coverage Results" MODIFIED="1652950355596" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
