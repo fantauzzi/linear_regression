@@ -158,7 +158,11 @@
       <workItem from="1652949391957" duration="2647000" />
       <workItem from="1653033553685" duration="7039000" />
       <workItem from="1653049048641" duration="2252000" />
-      <workItem from="1653119400860" duration="10277000" />
+      <workItem from="1653119400860" duration="12317000" />
+      <workItem from="1653207964761" duration="2919000" />
+      <workItem from="1653307026294" duration="6304000" />
+      <workItem from="1653314200258" duration="184000" />
+      <workItem from="1653314395688" duration="4146000" />
     </task>
     <servers />
   </component>
@@ -175,8 +179,28 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="jupyter-line">
           <url>notebook:///home/fanta/workspace/linear_regression/boston_lin_regr.ipynb</url>
-          <line>180</line>
-          <option name="timeStamp" value="4" />
+          <line>322</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="jupyter-line">
+          <url>notebook:///home/fanta/workspace/linear_regression/boston_lin_regr.ipynb</url>
+          <line>350</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="jupyter-line">
+          <url>notebook:///home/fanta/workspace/linear_regression/boston_lin_regr.ipynb</url>
+          <line>296</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="jupyter-line">
+          <url>notebook:///home/fanta/workspace/linear_regression/boston_lin_regr.ipynb</url>
+          <line>380</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="jupyter-line">
+          <url>notebook:///home/fanta/workspace/linear_regression/boston_lin_regr.ipynb</url>
+          <line>240</line>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
