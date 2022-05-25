@@ -1,5 +1,6 @@
 from sklearn.linear_model import LinearRegression
 import utils
+from numpy import argmax
 
 
 def test_load_boston_housing_market():
@@ -14,6 +15,8 @@ def test_load_boston_housing_market():
 def test_forward_select():
     X, y, _ = utils.load_boston_housing_market()
     selected, r2 = utils.forward_select(LinearRegression, X, y)
-    assert selected == ['LSTAT', 'RM', 'PTRATIO', 'DIS', 'NOX', 'CHAS', 'ZN', 'CRIM', 'RAD', 'TAX']
-    assert r2[0] == .5432418259547068
-    assert r2[-1] == .7288734084410414
+    assert selected == ['LSTAT', 'RM', 'PTRATIO', 'DIS', 'NOX', 'CHAS', 'ZN', 'CRIM', 'RAD', 'TAX', 'AGE', 'INDUS']
+    i_selected = argmax(r2)
+    assert i_selected == 9
+    assert r2[i_selected] == 0.7288734084410414
+

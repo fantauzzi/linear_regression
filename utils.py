@@ -1,6 +1,7 @@
 import warnings
 from sklearn import datasets
 from pandas import DataFrame, Series
+from copy import deepcopy
 
 
 def load_boston_housing_market():
@@ -27,27 +28,29 @@ def load_boston_housing_market():
 
 def forward_select(model, X, y):
     selected = []
-    candidates = list(X.columns)
-    best_r2 = -1
-    all_r2 = []
+    candidates = list(X.columns)  # Columns not yet selected
+    best_adj_r2 = -1
+    all_adj_r2 = []
     while candidates:
         best_candidate = None
+        # Find among the variables not yet selected for the model which one increases its R-squared the most
+        best_r2 = -1  # When leaving the loop, will contain the R-squared for the model with the best variable selected
+        adj_r2_best_r2 = -1  # Will contain the adjusted R-squared for the model with the best variable selected
         for candidate in candidates:
             X_selected = X[selected + [candidate]].copy()
             res = model().fit(X_selected, y)
-            n_vars = len(X_selected.columns)
-            n = len(X_selected)
-            adjusted_r2 = 1-(1-res.score(X_selected, y))*(n-1)/(n-n_vars-1)
-            if adjusted_r2 > best_r2:
+            r_2 = res.score(X_selected, y)
+            if r_2 > best_r2:
                 best_candidate = candidate
-                best_r2 = adjusted_r2
-        if best_candidate is None:
-            break
-        else:
-            selected.append(best_candidate)
-            candidates = [item for item in candidates if item != best_candidate]
-            all_r2.append(best_r2)
-    return selected, all_r2
+                best_r2 = r_2
+                n_vars = len(X_selected.columns)
+                n = len(X_selected)
+                adj_r2_best_r2 = 1 - (1 - r_2) * (n - 1) / (n - n_vars - 1)
+        assert best_candidate is not None
+        selected.append(best_candidate)
+        candidates = [item for item in candidates if item != best_candidate]
+        all_adj_r2.append(adj_r2_best_r2)
+    return selected, all_adj_r2
 
 
 if __name__ == '__main__':

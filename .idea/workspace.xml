@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63b313d2-5576-4b02-a429-9ab2eb490ba1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boston_lin_regr.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/boston_lin_regr.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boston_lin_regr.py" beforeDir="false" afterPath="$PROJECT_DIR$/boston_lin_regr.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +45,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python tests.Python tests in test_utils.py">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="linear_regression" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -159,9 +159,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests in test_utils.py" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.boston_lin_regr" />
-        <item itemvalue="Python tests.Python tests in test_utils.py" />
         <item itemvalue="Python tests.Python tests for test_utils.test_load_boston_housing_market" />
         <item itemvalue="Python tests.Python tests for test_utils.test_forward_select" />
       </list>
@@ -193,7 +193,9 @@
       <workItem from="1653374666214" duration="1102000" />
       <workItem from="1653375791842" duration="67000" />
       <workItem from="1653375867859" duration="214000" />
-      <workItem from="1653376089885" duration="1942000" />
+      <workItem from="1653376089885" duration="2854000" />
+      <workItem from="1653386529879" duration="618000" />
+      <workItem from="1653465618478" duration="5114000" />
     </task>
     <servers />
   </component>
@@ -205,10 +207,14 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/test_utils.py</url>
-          <line>17</line>
+          <line>19</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/linear_regression$test.coverage" NAME="test Coverage Results" MODIFIED="1653465819122" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/linear_regression$.coverage" NAME=" Coverage Results" MODIFIED="1653468225661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
